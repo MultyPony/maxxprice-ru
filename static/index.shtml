@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>
+		Главная</title>
+	<link type="text/css" rel="stylesheet" href="css/tail.select-light.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="js/loading-bar/dist/loading-bar.min.css" />
+	</link>
+	<!--#include file="chunks/head.html"-->
+</head>
+
+<body>
+	<!-- <label for="overlay">кнопь</label>
+	<input id="overlay" type="checkbox" hidden>
+	<img src="/images/mobmak1.jpg"> -->
+	<!--#include file="chunks/header.html"-->
+	<main id="home">
+		<h1>Мы купим вашу квартиру за <span style="white-space: nowrap;">3 дня</span></h1>
+		<h2 style="font-weight: 100;">онлайн-калькулятор</h2>
+		<form>
+			<select id="city">
+				<option>Москва </option>
+				<option>Москва и МО</option>
+				<option>Московская область</option>
+			</select>
+			<select type="text" class="disabled-input" id="house" placeholder="Улица, Дом">
+				<option>Улица, Дом</option>
+			</select>
+			<select id="square" class="disabled-input" placeholder="Жил. площадь">
+				<option>20 кв. м.</option>
+				<option>21 кв. м.</option>
+				<option>22 кв. м.</option>
+				<option>23 кв. м.</option>
+				<option>24 кв. м.</option>
+				<option>25 кв. м.</option>
+				<option>26 кв. м.</option>
+				<option>27 кв. м.</option>
+				<option>28 кв. м.</option>
+				<option>29 кв. м.</option>
+				<option>30 кв. м.</option>
+				<option>31 кв. м.</option>
+				<option>32 кв. м.</option>
+				<option>33 кв. м.</option>
+				<option>34 кв. м.</option>
+				<option>35 кв. м.</option>
+				<option>36 кв. м.</option>
+				<option>37 кв. м.</option>
+				<option>38 кв. м.</option>
+				<option>39 кв. м.</option>
+				<option>40 кв. м.</option>
+				<option>41 кв. м.</option>
+				<option>42 кв. м.</option>
+				<option>43 кв. м.</option>
+				<option>44 кв. м.</option>
+				<option>45 кв. м.</option>
+				<option>46 кв. м.</option>
+				<option>47 кв. м.</option>
+				<option>48 кв. м.</option>
+				<option>49 кв. м.</option>
+				<option>50 кв. м.</option>
+				<option>51 кв. м.</option>
+				<option>52 кв. м.</option>
+				<option>53 кв. м.</option>
+				<option>54 кв. м.</option>
+				<option>55 кв. м.</option>
+				<option>56 кв. м.</option>
+				<option>57 кв. м.</option>
+				<option>58 кв. м.</option>
+				<option>59 кв. м.</option>
+				<option>60 кв. м.</option>
+				<option>61 кв. м.</option>
+				<option>62 кв. м.</option>
+				<option>63 кв. м.</option>
+				<option>64 кв. м.</option>
+				<option>65 кв. м.</option>
+				<option>66 кв. м.</option>
+				<option>67 кв. м.</option>
+				<option>68 кв. м.</option>
+				<option>69 кв. м.</option>
+				<option>70 кв. м.</option>
+				<option>71 кв. м.</option>
+				<option>72 кв. м.</option>
+				<option>73 кв. м.</option>
+				<option>74 кв. м.</option>
+				<option>75 кв. м.</option>
+				<option>76 кв. м.</option>
+				<option>77 кв. м.</option>
+				<option>78 кв. м.</option>
+				<option>79 кв. м.</option>
+				<option>80 кв. м.</option>
+				<option>81 кв. м.</option>
+				<option>82 кв. м.</option>
+				<option>83 кв. м.</option>
+				<option>84 кв. м.</option>
+				<option>85 кв. м.</option>
+				<option>86 кв. м.</option>
+				<option>87 кв. м.</option>
+				<option>88 кв. м.</option>
+				<option>89 кв. м.</option>
+				<option>90 кв. м.</option>
+				<option>91 кв. м.</option>
+				<option>92 кв. м.</option>
+				<option>93 кв. м.</option>
+				<option>94 кв. м.</option>
+				<option>95 кв. м.</option>
+				<option>96 кв. м.</option>
+				<option>97 кв. м.</option>
+				<option>98 кв. м.</option>
+				<option>99 кв. м.</option>
+				<option>100 кв. м.</option>
+				<option>101 кв. м.</option>
+				<option>102 кв. м.</option>
+				<option>103 кв. м.</option>
+				<option>104 кв. м.</option>
+				<option>105 кв. м.</option>
+				<option>106 кв. м.</option>
+				<option>107 кв. м.</option>
+				<option>108 кв. м.</option>
+				<option>109 кв. м.</option>
+				<option>110 кв. м.</option>
+				<option>111 кв. м.</option>
+				<option>112 кв. м.</option>
+				<option>113 кв. м.</option>
+				<option>114 кв. м.</option>
+				<option>115 кв. м.</option>
+				<option>116 кв. м.</option>
+				<option>117 кв. м.</option>
+				<option>118 кв. м.</option>
+				<option>119 кв. м.</option>
+				<option>120 кв. м.</option>
+				<option>121 кв. м.</option>
+				<option>122 кв. м.</option>
+				<option>123 кв. м.</option>
+				<option>124 кв. м.</option>
+				<option>125 кв. м.</option>
+				<option>126 кв. м.</option>
+				<option>127 кв. м.</option>
+				<option>128 кв. м.</option>
+				<option>129 кв. м.</option>
+				<option>130 кв. м.</option>
+				<option>131 кв. м.</option>
+				<option>132 кв. м.</option>
+				<option>133 кв. м.</option>
+				<option>134 кв. м.</option>
+				<option>135 кв. м.</option>
+				<option>136 кв. м.</option>
+				<option>137 кв. м.</option>
+				<option>138 кв. м.</option>
+				<option>139 кв. м.</option>
+				<option>140 кв. м.</option>
+				<option>141 кв. м.</option>
+				<option>142 кв. м.</option>
+				<option>143 кв. м.</option>
+				<option>144 кв. м.</option>
+				<option>145 кв. м.</option>
+				<option>146 кв. м.</option>
+				<option>147 кв. м.</option>
+				<option>148 кв. м.</option>
+				<option>149 кв. м.</option>
+				<option>150 кв. м.</option>
+				<option>151 кв. м.</option>
+				<option>152 кв. м.</option>
+				<option>153 кв. м.</option>
+				<option>154 кв. м.</option>
+				<option>155 кв. м.</option>
+				<option>156 кв. м.</option>
+				<option>157 кв. м.</option>
+				<option>158 кв. м.</option>
+				<option>159 кв. м.</option>
+				<option>160 кв. м.</option>
+				<option>161 кв. м.</option>
+				<option>162 кв. м.</option>
+				<option>163 кв. м.</option>
+				<option>164 кв. м.</option>
+				<option>165 кв. м.</option>
+				<option>166 кв. м.</option>
+				<option>167 кв. м.</option>
+				<option>168 кв. м.</option>
+				<option>169 кв. м.</option>
+				<option>170 кв. м.</option>
+				<option>171 кв. м.</option>
+				<option>172 кв. м.</option>
+				<option>173 кв. м.</option>
+				<option>174 кв. м.</option>
+				<option>175 кв. м.</option>
+				<option>176 кв. м.</option>
+				<option>177 кв. м.</option>
+				<option>178 кв. м.</option>
+				<option>179 кв. м.</option>
+				<option>180 кв. м.</option>
+				<option>181 кв. м.</option>
+				<option>182 кв. м.</option>
+				<option>183 кв. м.</option>
+				<option>184 кв. м.</option>
+				<option>185 кв. м.</option>
+				<option>186 кв. м.</option>
+				<option>187 кв. м.</option>
+				<option>188 кв. м.</option>
+				<option>189 кв. м.</option>
+				<option>190 кв. м.</option>
+				<option>191 кв. м.</option>
+				<option>192 кв. м.</option>
+				<option>193 кв. м.</option>
+				<option>194 кв. м.</option>
+				<option>195 кв. м.</option>
+				<option>196 кв. м.</option>
+				<option>197 кв. м.</option>
+				<option>198 кв. м.</option>
+				<option>199 кв. м.</option>
+				<option>200 кв. м.</option>
+			</select>
+			<select id="stair" class="disabled-input" type="number" placeholder="Этаж">
+				<option> 1</option>
+				<option> 2</option>
+				<option> 3</option>
+				<option> 4+</option>
+			</select>
+			<select id="rem" class="disabled-input">
+				<option value="0">Без отделки</option>
+				<option value="1">Есть, но требуется обновление</option>
+				<option value="2">Недавно сделан косметический ремонт</option>
+				<option value="3">Евро</option>
+			</select>
+		</form>
+		<div class="d-flex justify-content-center">
+			<button id="getav" class="disabled">Рассчитать стоимость</button>
+		</div>
+		<p class="hidden">Идёт оценка объекта. Пожалуйста подождите</p>
+		<div id="loader" class="ldBar label-center hidden" data-preset="energy" data-value="0">
+		</div>
+		<div class="row calculateresult hidden">
+			<div class="col-sm-12 d-flex justify-content-center inputnumber"
+				style="display: flex; justify-content: center;">
+				<input type="text" id="phone" placeholder="+7 (_ _ _) _ _ _-_ _-_ _">
+				<button id="sendRecall" class="disabled">ОТПРАВИТЬ</button>
+			</div>
+		</div>
+	</main>
+	<div class="modal" id="full">
+		<div class="content">
+			<span class="modal-close" data-dismiss="modal"></span>
+			<h6>Результат</h6>
+			<p>Введите ваш номер телефона или почту,<br> чтобы мы предоставили вам результат вашего запроса</p>
+			<input type="text" style="border: 2px solid #e6ecf2;margin-bottom: 15px;" id="recrec">
+			<button id="sendres">Заказать результат</button>
+		</div>
+	</div>
+	<!--#include file="chunks/footer.html"-->
+	<script type="text/javascript" src="js/tail.select.min.js?v=0"></script>
+	<script type="text/javascript" src="/js/stat.js?v=177"></script>
+	<script type="text/javascript" src="js/loading-bar/dist/loading-bar.min.js"></script>
+</body>
+
+</html>

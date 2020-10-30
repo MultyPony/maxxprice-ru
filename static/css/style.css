@@ -1,0 +1,193 @@
+/* global */
+
+
+@font-face {
+	font-family: 'Calibri';
+	src: url('/fonts/Calibri.eot?#iefix') format('embedded-opentype'), url('/fonts/Calibri.woff') format('woff'), url('/fonts/Calibri.ttf') format('truetype'), url('/fonts/Calibri.svg#Calibri') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'Calibri';
+	src: url('fonts/Calibri-Bold.woff2') format('woff2'),
+		url('fonts/Calibri-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+
+
+* {
+	font-family: 'Calibri';
+}
+
+*:hover,
+*:focus {
+	transition-duration: 500ms;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 55px;
+}
+
+
+h2 {
+	font-size: 24px;
+}
+
+a {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:focus,
+a:hover {
+	text-decoration: none;
+	color: #7c7c7c;
+}
+
+input,
+select {
+	border-radius: 5px;
+	border: 0;
+	outline: none;
+	font-size: 20px;
+	padding: 0 10px;
+}
+
+form input,
+form select {
+	background-color: lightgrey;
+	border-radius: 0;
+}
+
+form input:hover,
+form select:hover {
+	background-color: white;
+}
+
+input:focus,
+input:hover {
+	border: 0;
+	outline: none;
+}
+
+
+button {
+	background: #3cb570;
+	font-family: 'Calibri';
+	color: white;
+
+	font-size: 20px;
+	padding: 10px 15px;
+	outline: none;
+	border: 0;
+	border-radius: 5px;
+}
+
+button.disabled {
+	pointer-events: none;
+	opacity: .8;
+}
+
+button:focus,
+button:hover {
+	outline: none;
+	border: 0;
+	background: #207847;
+}
+
+/* phone */
+
+.phone {
+	margin-top: 33px;
+	padding-right: 20px;
+
+}
+
+.number p {
+	font-size: 20px;
+	line-height: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.number p:nth-child(1) {
+	font-size: 23px;
+	font-weight: bold;
+}
+
+.phone img {
+	margin-top: 4px;
+	width: 50px;
+	height: 50px;
+}
+
+
+/*home*/
+
+.home h1 {
+	margin-top: 40px;
+	margin-bottom: 25px;
+}
+
+.home p,
+h1,
+h2 {
+	color: white;
+}
+
+.home h2 {
+	margin-bottom: 35px;
+}
+
+.home select {
+	height: 42px;
+	width: 215px;
+	background: #e7ecf2;
+	border: 0;
+	padding: 0 5px;
+	font-size: 20px;
+	margin-bottom: 20px;
+	outline: none:
+}
+
+
+
+.home select:hover,
+.home select:focus {
+	background: white;
+	border: 0;
+	outline: none:
+}
+
+.home .calculateresult p:nth-child(1) {
+	margin-top: 45px;
+}
+
+.home .calculateresult p {
+	margin: 0;
+	font-size: 20px;
+	line-height: 25px;
+}
+
+
+.home .inputnumber {
+	margin-top: 50px;
+}
+
+.home .inputnumber input {
+	margin-right: 25px;
+}
+
+/*footer */
+
+footer p {
+	text-decoration: underline;
+	font-size: 18px;
+	margin-top: 20px;
+}
