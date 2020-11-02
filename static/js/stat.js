@@ -1,9 +1,10 @@
 try {
     document.addEventListener("DOMContentLoaded", function () {
-        var loader = new ldBar("#loader", {
-            "preset": "energy",
-            "value": 0
-        });
+        // var loader = new ldBar("#loader", {
+        //     "preset": "energy",
+        //     "value": 0
+        // });
+        var loader = new ldLoader({ root: "#loader" }); 
 
         IMask(document.getElementById('phone'), {
             mask: '+{7}(000)000-00-00'
@@ -11,7 +12,12 @@ try {
         IMask(document.getElementById('phone_rec'), {
             mask: '+{7}(000)000-00-00'
         })
+        IMask(document.getElementById('phone_submit'), {
+            mask: '+{7}(000)000-00-00'
+        })
         const result_cont = document.getElementsByClassName('calculateresult')[0]
+
+        let mainButton = document.getElementById('getav');
 
         let city = "",
             house = "",
@@ -124,108 +130,143 @@ try {
             onChange: (item) => {
                 rem = item.value != "Отделка" ? item.value : ""
                 if (city != "" && house != "" && square != "" && stair != "" && rem != "") {
-                    document.getElementById('getav').classList.remove('disabled')
+                    mainButton.classList.remove('disabled')
+                    // document.getElementById('getav').classList.remove('disabled')
                 }
             }
         })
-        document.getElementById('getav').onclick = () => {
-            if (document.houseTail.selected() != "") {
-                document.getElementById('getav').classList.remove('disabled')
-            }
-            if (document.getElementById('getav').classList.contains('disabled')) {
-                if (city == "") {
-                    document.getElementById('city').nextElementSibling.classList.add('err')
-                    setTimeout(() => {
-                        document.getElementById('city').nextElementSibling.classList.remove('err')
-                    }, 2000)
-                }
-                if (house == "") {
-                    document.getElementById('house').nextElementSibling.classList.add('err')
-                    setTimeout(() => {
-                        document.getElementById('house').nextElementSibling.classList.remove('err')
-                    }, 2000)
-                }
-                if (square == "") {
-                    document.getElementById('square').nextElementSibling.classList.add('err')
-                    setTimeout(() => {
-                        document.getElementById('square').nextElementSibling.classList.remove('err')
-                    }, 2000)
-                }
-                if (stair == "") {
-                    document.getElementById('stair').nextElementSibling.classList.add('err')
-                    setTimeout(() => {
-                        document.getElementById('stair').nextElementSibling.classList.remove('err')
-                    }, 2000)
-                }
-                if (rem == "") {
-                    document.getElementById('rem').nextElementSibling.classList.add('err')
-                    setTimeout(() => {
-                        document.getElementById('rem').nextElementSibling.classList.remove('err')
-                    }, 2000)
-                }
-            } else {
 
-                document.getElementById('loader').classList.remove('hidden')
-                document.getElementById('loader').previousElementSibling.classList.remove('hidden')
+        // document.getElementById('getav').addEventListener("click", loadButton)
+        mainButton.addEventListener("click", loadButton)
+        
+        function loadButton() {
+            let fixed = document.getElementsByClassName("loader-wrap")
+            fixed[0].classList.remove("none");
+            loader.on();
+            setTimeout(() => {
+              loader.off();
+              fixed[0].classList.add('none');
+              document.getElementsByClassName("submit-contacts")[0].classList.remove("none");
+            }, 2000);
+            mainButton.classList.add('disabled')
+          }
 
-                fetch('/api/categories', {
-                    method: "POST",
-                    body: JSON.stringify({
-                        rem: rem * 1,
-                        house: document.houseTail.selected(),
-                        square: square.split(' ')[0] * 1,
-                        city: city,
-                        stair: stair,
-                    })
-                }).then(response => response.json()).then(average => {
-                    house = document.houseTail.selected()
-                    let ind = 100
-                    var p = document.querySelectorAll('.ldBar-label')[0];
-                    var c = 59
-                    setInterval(() => {
-                        p.setAttribute('data-value', "00:" + c)
-                        if (c > 0) c--
-                    }, 1000)
-                    let timerid = setInterval(() => {
-                        loader.set(--ind, false)
-                        if (ind % 10 == 0) {
-                            fetch('/api/average', {
-                                method: "POST",
-                                body: JSON.stringify({
-                                    rem: average.avg,
-                                    house: document.houseTail.selected(),
-                                    square: square.split(' ')[0] * 1,
-                                    city: city
-                                })
-                            }).then(response => response.json()).then(average => {
-                                if (average.avg == 0) {
-                                    if (ind == 100)
-                                        document.getElementById('full').classList.add('shown')
-                                    clearInterval(timerid)
+        let submitContacts = document.getElementById("submit-contacts");
+        submitContacts.addEventListener("click", async function(event) {
+            event.preventDefault();
+            let response = await fetch("/zhopa", {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify("kekes")
+              });
+            if (response.ok) { // если HTTP-статус в диапазоне 200-299
+                // получаем тело ответа (см. про этот метод ниже)
+                let json = await response.json();
+              } else {
+                alert("Ошибка HTTP: " + response.status);
+              }
+            console.log(response);
+        })
+        // document.getElementById('getav').onclick = () => {
+        //     if (document.houseTail.selected() != "") {
+        //         document.getElementById('getav').classList.remove('disabled')
+        //     }
+        //     if (document.getElementById('getav').classList.contains('disabled')) {
+        //         if (city == "") {
+        //             document.getElementById('city').nextElementSibling.classList.add('err')
+        //             setTimeout(() => {
+        //                 document.getElementById('city').nextElementSibling.classList.remove('err')
+        //             }, 2000)
+        //         }
+        //         if (house == "") {
+        //             document.getElementById('house').nextElementSibling.classList.add('err')
+        //             setTimeout(() => {
+        //                 document.getElementById('house').nextElementSibling.classList.remove('err')
+        //             }, 2000)
+        //         }
+        //         if (square == "") {
+        //             document.getElementById('square').nextElementSibling.classList.add('err')
+        //             setTimeout(() => {
+        //                 document.getElementById('square').nextElementSibling.classList.remove('err')
+        //             }, 2000)
+        //         }
+        //         if (stair == "") {
+        //             document.getElementById('stair').nextElementSibling.classList.add('err')
+        //             setTimeout(() => {
+        //                 document.getElementById('stair').nextElementSibling.classList.remove('err')
+        //             }, 2000)
+        //         }
+        //         if (rem == "") {
+        //             document.getElementById('rem').nextElementSibling.classList.add('err')
+        //             setTimeout(() => {
+        //                 document.getElementById('rem').nextElementSibling.classList.remove('err')
+        //             }, 2000)
+        //         }
+        //     } else {
 
-                                } else {
-                                    clearInterval(timerid)
+        //         document.getElementById('loader').classList.remove('hidden')
+        //         document.getElementById('loader').previousElementSibling.classList.remove('hidden')
 
-                                    document.getElementById('loader').classList.add('hidden')
-                                    document.getElementById('loader').previousElementSibling.classList.add('hidden')
+        //         fetch('/api/categories', {
+        //             method: "POST",
+        //             body: JSON.stringify({
+        //                 rem: rem * 1,
+        //                 house: document.houseTail.selected(),
+        //                 square: square.split(' ')[0] * 1,
+        //                 city: city,
+        //                 stair: stair,
+        //             })
+        //         }).then(response => response.json()).then(average => {
+        //             house = document.houseTail.selected()
+        //             let ind = 100
+        //             var p = document.querySelectorAll('.ldBar-label')[0];
+        //             var c = 59
+        //             setInterval(() => {
+        //                 p.setAttribute('data-value', "00:" + c)
+        //                 if (c > 0) c--
+        //             }, 1000)
+        //             let timerid = setInterval(() => {
+        //                 loader.set(--ind, false)
+        //                 if (ind % 10 == 0) {
+        //                     fetch('/api/average', {
+        //                         method: "POST",
+        //                         body: JSON.stringify({
+        //                             rem: average.avg,
+        //                             house: document.houseTail.selected(),
+        //                             square: square.split(' ')[0] * 1,
+        //                             city: city
+        //                         })
+        //                     }).then(response => response.json()).then(average => {
+        //                         if (average.avg == 0) {
+        //                             if (ind == 100)
+        //                                 document.getElementById('full').classList.add('shown')
+        //                             clearInterval(timerid)
 
-                                    result_cont.querySelectorAll('p').forEach((e) => e.remove())
-                                    let fsttextbloc = document.createElement('p')
-                                    let sndtextbloc = document.createElement('p')
-                                    fsttextbloc.innerText = `Цена объекта от ` + average.avg + ` до ` + average.agv + ` руб.`
-                                    sndtextbloc.innerText = `Отправьте нам заявку, мы соберём предложения всех компаний выкупающих объекты недвижимости, предложим больше всех, чтобы вы не тратили своё время на поиски`
-                                    result_cont.prepend(sndtextbloc)
-                                    result_cont.prepend(fsttextbloc)
-                                    result_cont.classList.remove('hidden')
-                                }
-                            })
-                        }
-                    }, 600)
-                })
+        //                         } else {
+        //                             clearInterval(timerid)
 
-            }
+        //                             document.getElementById('loader').classList.add('hidden')
+        //                             document.getElementById('loader').previousElementSibling.classList.add('hidden')
 
-        }
+        //                             result_cont.querySelectorAll('p').forEach((e) => e.remove())
+        //                             let fsttextbloc = document.createElement('p')
+        //                             let sndtextbloc = document.createElement('p')
+        //                             fsttextbloc.innerText = `Цена объекта от ` + average.avg + ` до ` + average.agv + ` руб.`
+        //                             sndtextbloc.innerText = `Отправьте нам заявку, мы соберём предложения всех компаний выкупающих объекты недвижимости, предложим больше всех, чтобы вы не тратили своё время на поиски`
+        //                             result_cont.prepend(sndtextbloc)
+        //                             result_cont.prepend(fsttextbloc)
+        //                             result_cont.classList.remove('hidden')
+        //                         }
+        //                     })
+        //                 }
+        //             }, 600)
+        //         })
+
+        //     }
+
+        // }
         document.getElementById('phone').onkeyup = () => {
             document.getElementById('sendRecall').classList.remove('disabled')
         }

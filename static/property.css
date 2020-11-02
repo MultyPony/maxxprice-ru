@@ -566,8 +566,8 @@ p {
     color: white !important;
 }
 
-form input,
-form select {
+.main-form input,
+.main-form select {
     width: 100px;
 }
 
@@ -775,7 +775,7 @@ main h1 {
         border-radius: 0;
     }
 
-    form {
+    .main-form {
         display: flex;
     }
 
@@ -1006,8 +1006,8 @@ main h1 {
         padding: 0 17px;
     }
 
-    form select,
-    form input {
+    .main-form select,
+    .main-form input {
         font-size: 17px;
         padding-left: 8.5px;
     }
@@ -1110,13 +1110,13 @@ main h1 {
         width: 86vw !important;
     }
 
-    form {
+    .main-form {
         display: flex;
         flex-direction: column;
         width: 100%;
     }
 
-    form * {
+    .main-form * {
         width: 100% !important;
         margin-bottom: 10px;
         background-color: white;

@@ -7,7 +7,8 @@
 	<link type="text/css" rel="stylesheet" href="css/tail.select-light.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="js/loading-bar/dist/loading-bar.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="js/loading-bar/dist/loading-bar.min.css" /> -->
 	</link>
 	<!--#include file="chunks/head.html"-->
 </head>
@@ -20,7 +21,7 @@
 	<main id="home">
 		<h1>Мы купим вашу квартиру за <span style="white-space: nowrap;">3 дня</span></h1>
 		<h2 style="font-weight: 100;">онлайн-калькулятор</h2>
-		<form>
+		<form class="main-form">
 			<select id="city">
 				<option>Москва </option>
 				<option>Москва и МО</option>
@@ -226,8 +227,10 @@
 			</select>
 		</form>
 		<div class="d-flex justify-content-center">
-			<button id="getav" class="disabled">Рассчитать стоимость</button>
+			<button id="getav" class="">Рассчитать стоимость</button>
+			<!-- <button id="getav" class="disabled">Рассчитать стоимость</button> -->
 		</div>
+		<!--#include file="chunks/load-and-contacts.html"-->
 		<p class="hidden">Идёт оценка объекта. Пожалуйста подождите</p>
 		<div id="loader" class="ldBar label-center hidden" data-preset="energy" data-value="0">
 		</div>
@@ -251,7 +254,8 @@
 	<!--#include file="chunks/footer.html"-->
 	<script type="text/javascript" src="js/tail.select.min.js?v=0"></script>
 	<script type="text/javascript" src="/js/stat.js?v=177"></script>
-	<script type="text/javascript" src="js/loading-bar/dist/loading-bar.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
+	<!-- <script type="text/javascript" src="js/loading-bar/dist/loading-bar.min.js"></script> -->
 </body>
 
 </html>
