@@ -15,15 +15,42 @@ try {
         IMask(document.getElementById('phone_submit'), {
             mask: '+{7}(000)000-00-00'
         })
+
+        let tippyButton = tippy(document.getElementById('submit-contacts'), {
+            content: 'Введите email или номер телефона',
+            offset: [0, 20],
+            placement: 'bottom',
+        });
+        tippyButton.disable();
+        let tippyEmail = tippy(document.getElementById('email_submit'), {
+            content: 'Введите корректный email',
+            offset: [0, 20],
+            placement: 'bottom',
+        });
+        tippyEmail.disable();
+        let tippyPhone = tippy(document.getElementById('phone_submit'), {
+            content: 'Введите корректный номер',
+            offset: [0, 20],
+            placement: 'bottom',
+        });
+        tippyPhone.disable();
+
         const result_cont = document.getElementsByClassName('calculateresult')[0]
 
         let mainButton = document.getElementById('getav');
+
+        document.getElementById('form-contacts-id').addEventListener('submit', function(e) {
+                e.preventDefault();
+        })
 
         let city = "",
             house = "",
             square = "",
             stair = "",
             rem = ""
+            email = "",
+            phone = ""
+
         document.cityTail = new SlimSelect({
             select: document.getElementById("city"),
             placeholder: 'Город',
@@ -33,11 +60,19 @@ try {
                 document.getElementById('house').classList.remove('disabled-input')
             }
         })
+
+        var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+        var token = "31eaf903a7b8a04154ad9ddb5e7376667580fd3a";
+
         document.houseTail = new SlimSelect({
             select: document.getElementById("house"),
             placeholder: 'Улица, Дом',
             searchPlaceholder: "Введите свой адрес и выберите его в появившемся ниже списке",
             search: true,
+            onChange: (item) => {
+                house = item.value
+                // document.getElementById('house').classList.remove('disabled-input')
+            },
             searchFilter: (option, search) => {
                 let found = false
                 search.split(' ').forEach((e) => {
@@ -51,16 +86,23 @@ try {
                 return found
             },
             ajax: (search, callback) => {
-                fetch('/suggestion', {
+                fetch(url, {
+                // fetch('/suggestion', {
                     method: 'POST',
                     mode: 'cors',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Authorization": "Token " + token
+                    },
                     body: JSON.stringify({
                         "query": search,
                         "locations": [{
                             "region": "москва"
                         }, {
-                            "region": "московская обл"
-                        }, ],
+                            "region_fias_id": "29251dcf-00a1-4e34-98d4-5c47484a36d4"
+                            // "region": "московская обл"
+                        }],
                         "from_bound": {
                             "value": "street"
                         },
@@ -129,6 +171,7 @@ try {
             placeholder: 'Отделка',
             onChange: (item) => {
                 rem = item.value != "Отделка" ? item.value : ""
+                console.log(`city: ${city}; house: ${house}; square: ${square}; stair: ${stair}; rem: ${rem}`)
                 if (city != "" && house != "" && square != "" && stair != "" && rem != "") {
                     mainButton.classList.remove('disabled')
                     // document.getElementById('getav').classList.remove('disabled')
@@ -149,25 +192,73 @@ try {
               document.getElementsByClassName("submit-contacts")[0].classList.remove("none");
             }, 2000);
             mainButton.classList.add('disabled')
-          }
+        }
+
+        function validEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email)
+        }
 
         let submitContacts = document.getElementById("submit-contacts");
         submitContacts.addEventListener("click", async function(event) {
             event.preventDefault();
-            let response = await fetch("/zhopa", {
+            
+            let phoneEl = document.getElementById('phone_submit')
+            let emailEl = document.getElementById('email_submit')
+            if (phoneEl.value === '' && emailEl.value === '') {
+                tippyButton.enable()
+                tippyButton.show()                
+                return
+            }
+            else {
+                tippyButton.disable()
+                phone = phoneEl.value
+                email = emailEl.value
+                if (email !== '' && !validEmail(email)) {
+                    tippyEmail.enable()
+                    tippyEmail.show()
+                    return
+                }
+                else {
+                    tippyEmail.disable()
+                }
+                if (phone !== '' && phone.length !== 16) {
+                    tippyPhone.enable()
+                    tippyPhone.show()
+                    return
+                }
+                else {
+                    tippyPhone.disable()
+                }
+                console.log(phone + " " + email)
+                console.log(phone.length)
+            }
+            let response = await fetch("/submit-contacts", {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json;charset=utf-8'
                 },
-                body: JSON.stringify("kekes")
+                // body: JSON.stringify("Тестовое сообщение")
+                body: JSON.stringify({
+                    // city: city,
+                    house: house,
+                    square: square,
+                    stair: stair,
+                    rem: rem,
+                    phone: phone,
+                    email: email
+                })
               });
-            if (response.ok) { // если HTTP-статус в диапазоне 200-299
+            if (response.ok) { 
+                // если HTTP-статус в диапазоне 200-299
                 // получаем тело ответа (см. про этот метод ниже)
                 let json = await response.json();
+                console.log(json)
               } else {
                 alert("Ошибка HTTP: " + response.status);
               }
             console.log(response);
+            location.reload();
         })
         // document.getElementById('getav').onclick = () => {
         //     if (document.houseTail.selected() != "") {
@@ -307,7 +398,7 @@ try {
                     stair: stair,
                     city: city,
                     house: house,
-                    square: square
+                    square: square,
                 })
             })
             alert('Мы вам перезвоним!')

@@ -227,8 +227,8 @@
 			</select>
 		</form>
 		<div class="d-flex justify-content-center">
-			<button id="getav" class="">Рассчитать стоимость</button>
-			<!-- <button id="getav" class="disabled">Рассчитать стоимость</button> -->
+			<!-- <button id="getav" class="">Рассчитать стоимость</button> -->
+			<button id="getav" class="disabled">Рассчитать стоимость</button>
 		</div>
 		<!--#include file="chunks/load-and-contacts.html"-->
 		<p class="hidden">Идёт оценка объекта. Пожалуйста подождите</p>
@@ -252,6 +252,8 @@
 		</div>
 	</div>
 	<!--#include file="chunks/footer.html"-->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
 	<script type="text/javascript" src="js/tail.select.min.js?v=0"></script>
 	<script type="text/javascript" src="/js/stat.js?v=177"></script>
 	<script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
