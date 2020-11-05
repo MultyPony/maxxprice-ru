@@ -34,6 +34,13 @@ try {
             placement: 'bottom',
         });
         tippyPhone.disable();
+        let tippyCommunication = tippy(document.getElementById('socials'), {
+            content: 'Выберите способ связи',
+            offset: [0, 20],
+            placement: 'top',
+        });
+        tippyCommunication.disable();
+
 
         const result_cont = document.getElementsByClassName('calculateresult')[0]
 
@@ -46,10 +53,11 @@ try {
         let city = "",
             house = "",
             square = "",
-            stair = "",
+            rooms = "",
             rem = ""
             email = "",
             phone = ""
+            communicationMethod = ""
 
         document.cityTail = new SlimSelect({
             select: document.getElementById("city"),
@@ -153,15 +161,15 @@ try {
             searchPlaceholder: "Выберите из списка",
             onChange: (item) => {
                 square = item.value != "Жил. площадь" ? item.value : ""
-                document.getElementById('stair').classList.remove('disabled-input')
+                document.getElementById('rooms').classList.remove('disabled-input')
             }
         });
         document.stairTail = new SlimSelect({
-            select: document.getElementById("stair"),
+            select: document.getElementById("rooms"),
             searchPlaceholder: "Выберите из списка",
-            placeholder: 'Этаж',
+            placeholder: 'Комнат',
             onChange: (item) => {
-                stair = item.value != "Этаж" ? item.value : ""
+                rooms = item.value != "Комнат" ? item.value : ""
                 document.getElementById('rem').classList.remove('disabled-input')
             }
         })
@@ -171,8 +179,8 @@ try {
             placeholder: 'Отделка',
             onChange: (item) => {
                 rem = item.value != "Отделка" ? item.value : ""
-                console.log(`city: ${city}; house: ${house}; square: ${square}; stair: ${stair}; rem: ${rem}`)
-                if (city != "" && house != "" && square != "" && stair != "" && rem != "") {
+                console.log(`city: ${city}; house: ${house}; square: ${square}; rooms: ${rooms}; rem: ${rem}`)
+                if (city != "" && house != "" && square != "" && rooms != "" && rem != "") {
                     mainButton.classList.remove('disabled')
                     // document.getElementById('getav').classList.remove('disabled')
                 }
@@ -199,10 +207,29 @@ try {
             return re.test(email)
         }
 
+
         let submitContacts = document.getElementById("submit-contacts");
         submitContacts.addEventListener("click", async function(event) {
             event.preventDefault();
             
+            const rbs = document.querySelectorAll('input[name="contact"]');
+            for (const rb of rbs) {
+                if (rb.checked) {
+                    communicationMethod = rb.value;
+                    break;
+                }
+            }
+            if (communicationMethod === "") {
+                tippyCommunication.enable();
+                tippyCommunication.show()
+                return
+            }
+            else {
+                tippyCommunication.disable();
+            }
+            // alert(communicationMethod);
+
+
             let phoneEl = document.getElementById('phone_submit')
             let emailEl = document.getElementById('email_submit')
             if (phoneEl.value === '' && emailEl.value === '') {
@@ -234,6 +261,7 @@ try {
                 console.log(phone.length)
             }
             let response = await fetch("/submit-contacts", {
+            // let response = await fetch("https://warm-thicket-08100.herokuapp.com/", {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json;charset=utf-8'
@@ -243,10 +271,11 @@ try {
                     // city: city,
                     house: house,
                     square: square,
-                    stair: stair,
+                    rooms: rooms,
                     rem: rem,
                     phone: phone,
-                    email: email
+                    email: email,
+                    communicationMethod: communicationMethod,
                 })
               });
             if (response.ok) { 
@@ -260,104 +289,7 @@ try {
             console.log(response);
             location.reload();
         })
-        // document.getElementById('getav').onclick = () => {
-        //     if (document.houseTail.selected() != "") {
-        //         document.getElementById('getav').classList.remove('disabled')
-        //     }
-        //     if (document.getElementById('getav').classList.contains('disabled')) {
-        //         if (city == "") {
-        //             document.getElementById('city').nextElementSibling.classList.add('err')
-        //             setTimeout(() => {
-        //                 document.getElementById('city').nextElementSibling.classList.remove('err')
-        //             }, 2000)
-        //         }
-        //         if (house == "") {
-        //             document.getElementById('house').nextElementSibling.classList.add('err')
-        //             setTimeout(() => {
-        //                 document.getElementById('house').nextElementSibling.classList.remove('err')
-        //             }, 2000)
-        //         }
-        //         if (square == "") {
-        //             document.getElementById('square').nextElementSibling.classList.add('err')
-        //             setTimeout(() => {
-        //                 document.getElementById('square').nextElementSibling.classList.remove('err')
-        //             }, 2000)
-        //         }
-        //         if (stair == "") {
-        //             document.getElementById('stair').nextElementSibling.classList.add('err')
-        //             setTimeout(() => {
-        //                 document.getElementById('stair').nextElementSibling.classList.remove('err')
-        //             }, 2000)
-        //         }
-        //         if (rem == "") {
-        //             document.getElementById('rem').nextElementSibling.classList.add('err')
-        //             setTimeout(() => {
-        //                 document.getElementById('rem').nextElementSibling.classList.remove('err')
-        //             }, 2000)
-        //         }
-        //     } else {
-
-        //         document.getElementById('loader').classList.remove('hidden')
-        //         document.getElementById('loader').previousElementSibling.classList.remove('hidden')
-
-        //         fetch('/api/categories', {
-        //             method: "POST",
-        //             body: JSON.stringify({
-        //                 rem: rem * 1,
-        //                 house: document.houseTail.selected(),
-        //                 square: square.split(' ')[0] * 1,
-        //                 city: city,
-        //                 stair: stair,
-        //             })
-        //         }).then(response => response.json()).then(average => {
-        //             house = document.houseTail.selected()
-        //             let ind = 100
-        //             var p = document.querySelectorAll('.ldBar-label')[0];
-        //             var c = 59
-        //             setInterval(() => {
-        //                 p.setAttribute('data-value', "00:" + c)
-        //                 if (c > 0) c--
-        //             }, 1000)
-        //             let timerid = setInterval(() => {
-        //                 loader.set(--ind, false)
-        //                 if (ind % 10 == 0) {
-        //                     fetch('/api/average', {
-        //                         method: "POST",
-        //                         body: JSON.stringify({
-        //                             rem: average.avg,
-        //                             house: document.houseTail.selected(),
-        //                             square: square.split(' ')[0] * 1,
-        //                             city: city
-        //                         })
-        //                     }).then(response => response.json()).then(average => {
-        //                         if (average.avg == 0) {
-        //                             if (ind == 100)
-        //                                 document.getElementById('full').classList.add('shown')
-        //                             clearInterval(timerid)
-
-        //                         } else {
-        //                             clearInterval(timerid)
-
-        //                             document.getElementById('loader').classList.add('hidden')
-        //                             document.getElementById('loader').previousElementSibling.classList.add('hidden')
-
-        //                             result_cont.querySelectorAll('p').forEach((e) => e.remove())
-        //                             let fsttextbloc = document.createElement('p')
-        //                             let sndtextbloc = document.createElement('p')
-        //                             fsttextbloc.innerText = `Цена объекта от ` + average.avg + ` до ` + average.agv + ` руб.`
-        //                             sndtextbloc.innerText = `Отправьте нам заявку, мы соберём предложения всех компаний выкупающих объекты недвижимости, предложим больше всех, чтобы вы не тратили своё время на поиски`
-        //                             result_cont.prepend(sndtextbloc)
-        //                             result_cont.prepend(fsttextbloc)
-        //                             result_cont.classList.remove('hidden')
-        //                         }
-        //                     })
-        //                 }
-        //             }, 600)
-        //         })
-
-        //     }
-
-        // }
+       
         document.getElementById('phone').onkeyup = () => {
             document.getElementById('sendRecall').classList.remove('disabled')
         }
@@ -368,7 +300,7 @@ try {
                 body: JSON.stringify({
                     phone: phoneInput.value,
                     rem: rem,
-                    stair: stair,
+                    rooms: rooms,
                     city: city,
                     house: document.houseTail.selected(),
                     square: square
@@ -395,7 +327,7 @@ try {
                 body: JSON.stringify({
                     phone: phone,
                     rem: rem,
-                    stair: stair,
+                    rooms: rooms,
                     city: city,
                     house: house,
                     square: square,
@@ -411,7 +343,7 @@ try {
                 body: JSON.stringify({
                     phone: phone,
                     rem: rem,
-                    stair: stair,
+                    rooms: rooms,
                     city: city,
                     house: house,
                     square: square

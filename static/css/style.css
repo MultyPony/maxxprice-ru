@@ -211,6 +211,7 @@ h2 {
 	align-items: flex-start;
 	justify-content: space-between;
 	overflow: hidden;
+	padding-top: 20px;
 }
 
 .socials {
@@ -221,23 +222,54 @@ h2 {
 	min-width: 95px;
 }
 
+.socials__item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.socials__item:first-child {
+	margin-right: 19px;
+}
+
+.socials__item [type=radio] { 
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.socials__item img{
+	cursor: pointer;
+}
+
+.socials__item img:hover {
+	filter: drop-shadow(0 0 0.35rem white);
+}
+
+.socials__item [type=radio]:checked + img {
+	filter: drop-shadow(0 0 0.35rem white);
+}
+
+.socials__item_gmail {
+	order: 2;
+	margin-top: 17px;
+}
+
 .icon {
 	height: auto;
 	width: 38px;
 	max-width: 100%;
 	
 }
-.icon:first-child {
-	margin-right: 19px;
-}
 
 .gmail {
-	order: 2;
 	width: 50px;
-	margin-top: 17px;
 }
 
 .submit-contacts__text {
+	margin-bottom: 0;
+
 	font-size: 16px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -284,6 +316,17 @@ h2 {
 	width: 100%;
 }
 
+.ss-main .ss-single-selected .placeholder .ss-disabled {
+	/* color: #666 !important; */
+	background-color: inherit !important;
+	margin-top: 10px;
+}
+
+.ss-main * {
+	color: #000 !important;
+}
+
+
 /*footer */
 
 footer p {
@@ -302,6 +345,7 @@ footer p {
 	.submit-contacts__wrap {
 		align-items: center;
 		flex-direction: column;
+		padding-top: 0;
 	}
 
 	.socials {
@@ -309,6 +353,8 @@ footer p {
 	}
 
 	.submit-contacts__text {
+		margin-bottom: 0;
+
 		font-size: 20px;
 		white-space: normal;
 	}
@@ -321,7 +367,6 @@ footer p {
 	.gmail {
 		width: 60px;
 		margin: 0 50px;
-		order: 0;
 	}
 
 	.w100 {
@@ -329,7 +374,41 @@ footer p {
 	}
 
 	.socials {
-		margin-bottom: 20px;
+		margin: 20px 0;
+	}
+
+	.socials__item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.socials__item_gmail {
+		order: 0;
+		margin-top: 0;
+	}
+
+	.socials__item:first-child {
+		margin-right: 0;
+	}
+
+	.socials__item [type=radio] { 
+		position: absolute;
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	.socials__item img{
+		cursor: pointer;
+	}
+	
+	.socials__item img:hover {
+		filter: drop-shadow(0 0 0.35rem white);
+	}
+
+	.socials__item [type=radio]:checked + img {
+		filter: drop-shadow(0 0 0.35rem white);
 	}
 
 	.form-contacts {
@@ -349,5 +428,13 @@ footer p {
 	.form-contacts__button {
 		padding: 12px 15px;
 		margin-left: 25px;
+	}
+
+	.ss-main .ss-single-selected .placeholder .ss-disabled {
+		margin-top: 20px;
+	}
+
+	.ss-main * {
+		color: #666 !important;
 	}
 }

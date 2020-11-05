@@ -227,8 +227,8 @@
 			</select>
 		</form>
 		<div class="d-flex justify-content-center">
-			<!-- <button id="getav" class="">Рассчитать стоимость</button> -->
-			<button id="getav" class="disabled">Рассчитать стоимость</button>
+			<button id="getav" class="">Рассчитать стоимость</button>
+			<!-- <button id="getav" class="disabled">Рассчитать стоимость</button> -->
 		</div>
 		<!--#include file="chunks/load-and-contacts.html"-->
 		<p class="hidden">Идёт оценка объекта. Пожалуйста подождите</p>

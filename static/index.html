@@ -2,19 +2,49 @@
 <html lang="ru">
 
 <head>
+	<title>
+		Главная</title>
+	<link type="text/css" rel="stylesheet" href="css/tail.select-light.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="js/loading-bar/dist/loading-bar.min.css" /> -->
+	</link>
+	<link rel="stylesheet" href="css/style.css?v=7">
+	<link rel="stylesheet" type="text/css" href="/property.css?v=181">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<title>Главная</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<link type="text/css" rel="stylesheet" href="css/tail.select-light.css" />
-	<link rel="stylesheet" href="css/style.css?v=6">
-	<link rel="stylesheet" type="text/css" href="/property.css?v=144">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript">
+		(function (m, e, t, r, i, k, a) {
+			m[i] = m[i] || function () {
+				(m[i].a = m[i].a || []).push(arguments)
+			};
+			m[i].l = 1 * new Date();
+			k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(
+				k, a)
+		})
+		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-
+		ym(67567321, "init", {
+			clickmap: true,
+			trackLinks: true,
+			accurateTrackBounce: true,
+			webvisor: true
+		});
+</script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/67567321" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 
 <body>
+	<!-- <label for="overlay">кнопь</label>
+	<input id="overlay" type="checkbox" hidden>
+	<img src="/images/mobmak1.jpg"> -->
 	<header>
 		<a href="/">
 			<img id="logo" src="/logo.png"></a>
@@ -31,22 +61,22 @@
 			</div>
 		</div>
 	</header>
-
 	<main id="home">
 		<h1>Мы купим вашу квартиру за <span style="white-space: nowrap;">3 дня</span></h1>
 		<h2 style="font-weight: 100;">онлайн-калькулятор</h2>
 		<form class="main-form">
 			<select id="city">
-				<option>Город</option>
+				<option data-placeholder="true"></option>
 				<option>Москва </option>
 				<option>Москва и МО</option>
 				<option>Московская область</option>
 			</select>
-			<select type="text" class="disabled-input" id="house" placeholder="Улица, Дом">
+			<select type="text" class="disabled-input" id="house">
+				<!-- <option data-placeholder="true"></option> -->
 				<option>Улица, Дом</option>
 			</select>
-			<select id="square" class="disabled-input" type="number" placeholder="Жил. площадь">
-				<option>Жил. площадь</option>
+			<select id="square" class="disabled-input" placeholder="Жил. площадь">
+				<option data-placeholder="true"></option>
 				<option>20 кв. м.</option>
 				<option>21 кв. м.</option>
 				<option>22 кв. м.</option>
@@ -229,51 +259,15 @@
 				<option>199 кв. м.</option>
 				<option>200 кв. м.</option>
 			</select>
-			<select id="stair" class="disabled-input" type="number" placeholder="Этаж">
-				<option>Этаж</option>
-				<option>Этаж 1</option>
-				<option>Этаж 2</option>
-				<option>Этаж 3</option>
-				<option>Этаж 4</option>
-				<option>Этаж 5</option>
-				<option>Этаж 6</option>
-				<option>Этаж 7</option>
-				<option>Этаж 8</option>
-				<option>Этаж 9</option>
-				<option>Этаж 10</option>
-				<option>Этаж 11</option>
-				<option>Этаж 12</option>
-				<option>Этаж 13</option>
-				<option>Этаж 14</option>
-				<option>Этаж 15</option>
-				<option>Этаж 16</option>
-				<option>Этаж 17</option>
-				<option>Этаж 18</option>
-				<option>Этаж 19</option>
-				<option>Этаж 20</option>
-				<option>Этаж 21</option>
-				<option>Этаж 22</option>
-				<option>Этаж 23</option>
-				<option>Этаж 24</option>
-				<option>Этаж 25</option>
-				<option>Этаж 26</option>
-				<option>Этаж 27</option>
-				<option>Этаж 28</option>
-				<option>Этаж 29</option>
-				<option>Этаж 30</option>
-				<option>Этаж 31</option>
-				<option>Этаж 32</option>
-				<option>Этаж 33</option>
-				<option>Этаж 34</option>
-				<option>Этаж 35</option>
-				<option>Этаж 36</option>
-				<option>Этаж 37</option>
-				<option>Этаж 38</option>
-				<option>Этаж 39</option>
-				<option>Этаж 40</option>
+			<select id="rooms" class="disabled-input" type="number" placeholder="Этаж">
+				<option data-placeholder="true"></option>
+				<option> 1</option>
+				<option> 2</option>
+				<option> 3</option>
+				<option> 4+</option>
 			</select>
 			<select id="rem" class="disabled-input">
-				<option>Отделка</option>
+				<option data-placeholder="true"></option>
 				<option value="0">Без отделки</option>
 				<option value="1">Есть, но требуется обновление</option>
 				<option value="2">Недавно сделан косметический ремонт</option>
@@ -281,7 +275,50 @@
 			</select>
 		</form>
 		<div class="d-flex justify-content-center">
-			<button id="getav" class="dis">Рассчитать стоимость</button>
+			<!-- <button id="getav" class="">Рассчитать стоимость</button> -->
+			<button id="getav" class="disabled">Рассчитать стоимость</button>
+		</div>
+		<div class="loader-wrap fixed none">
+			<img id="loader" class="ldld" src="images/Rolling-1s-200px.svg"/>
+		</div>
+		<section class="submit-contacts none">
+		  <p class="submit-contacts__text">Выберите удобный способ&#13;&#10; получить оценку и введите данные</p>
+		  <div class="submit-contacts__wrap">
+			<div id="socials" class="socials">
+				<div class="socials__item">
+					<label>
+						<input type="radio" name="contact" value="phone">
+						<img class="icon" src="images/phone-android.png" alt="">
+					</label>
+				</div>
+				<div class="socials__item socials__item_gmail">
+					<label>
+						<input type="radio" name="contact" value="email">
+						<img class="icon gmail" src="images/gmail-logo.png" alt="">
+					</label>
+				</div>
+				<div class="socials__item">
+					<label>
+						<input type="radio" name="contact" value="whatsapp">
+						<img class="icon" src="images/whatsapp.png" alt="">
+					</label>
+				</div>
+				<div class="w100"></div>
+			</div>
+			<div class="form-contacts-wrap">
+				<form id="form-contacts-id" class="form-contacts">
+					<input id="email_submit" class="form-contacts__input form-contacts__input_email" type="email" style="border: 2px solid #e6ecf2;"
+					placeholder="Email">
+					<p class="submit-contacts__text submit-contacts__text_disabled">или</p>
+					<input id="phone_submit" class="form-contacts__input form-contacts__input_phone" type="text" style="border: 2px solid #e6ecf2;"
+					placeholder="+7 (_ _ _) _ _ _-_ _-_ _">
+					<button id="submit-contacts" class="form-contacts__button">Отправить</button>
+				</form>
+			</div>
+		  </div>
+		</section>
+		<p class="hidden">Идёт оценка объекта. Пожалуйста подождите</p>
+		<div id="loader" class="ldBar label-center hidden" data-preset="energy" data-value="0">
 		</div>
 		<div class="row calculateresult hidden">
 			<div class="col-sm-12 d-flex justify-content-center inputnumber"
@@ -291,6 +328,15 @@
 			</div>
 		</div>
 	</main>
+	<div class="modal" id="full">
+		<div class="content">
+			<span class="modal-close" data-dismiss="modal"></span>
+			<h6>Результат</h6>
+			<p>Введите ваш номер телефона или почту,<br> чтобы мы предоставили вам результат вашего запроса</p>
+			<input type="text" style="border: 2px solid #e6ecf2;margin-bottom: 15px;" id="recrec">
+			<button id="sendres">Заказать результат</button>
+		</div>
+	</div>
 	<div class="modal" id="rec">
 		<div class="content">
 			<span class="modal-close" data-dismiss="modal"></span>
@@ -298,16 +344,19 @@
 			<p>Введите ваш номер телефона,<br> и мы вам перезвоним</p>
 			<input type="text" style="border: 2px solid #e6ecf2;margin-bottom: 15px;" id="phone_rec"
 				placeholder="+7 (_ _ _) _ _ _-_ _-_ _">
-			<button id="sendrec">Заказать звонок</button>
+			<button id="sendrec" class="disabled">Заказать звонок</button>
 		</div>
 	</div>
-
 	<footer>
 		<span>Все права защищены 2020</span>
 	</footer>
 	<script src="https://unpkg.com/imask"></script>
-	<script type="text/javascript" src="js/tail.select.min.js?v="></script>
-	<script type="text/javascript" src="/js/stat.js?v=74"></script>
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+	<script type="text/javascript" src="js/tail.select.min.js?v=0"></script>
+	<script type="text/javascript" src="/js/stat.js?v=177"></script>
+	<script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
+	<!-- <script type="text/javascript" src="js/loading-bar/dist/loading-bar.min.js"></script> -->
 </body>
 
 </html>
