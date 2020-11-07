@@ -1,0 +1,36 @@
+var loader = new ldLoader({ root: "#loader-feedback" }); 
+
+document.getElementById('load-more').addEventListener("click", loadButton)
+        
+function loadButton() {
+    let fixed = document.getElementsByClassName("loader-wrap")
+    let errorText = document.getElementsByClassName("error-feedback")[0]
+    errorText.classList.add('none');
+    fixed[0].classList.remove("none");
+    loader.on();
+    setTimeout(() => {
+        loader.off();
+        fixed[0].classList.add('none');
+        // document.getElementsByClassName("submit-contacts")[0].classList.remove("none");
+        errorText.classList.remove('none');
+    }, 2000);
+    // mainButton.classList.add('disabled')
+    // var objDiv = document.getElementById("your_div");
+    // objDiv.scrollTop = objDiv.scrollHeight;
+    // scrollingElement = (document.scrollingElement || document.body)
+    scrollingElement = document.getElementById('feedback');
+    scrollingElement.scrollTop = scrollingElement.scrollHeight;
+}
+
+let leaveFeedbackForm = document.getElementById('leave-feedback-form');
+
+document.getElementById('leave-feedback-btn').onclick = () => {
+    leaveFeedbackForm.classList.add('shown')
+}
+leaveFeedbackForm.getElementsByClassName('modal-close')[0].onclick = () => {
+    leaveFeedbackForm.classList.remove('shown')
+}
+
+// function scrollToBottom () {
+//     scrollingElement.scrollTop = scrollingElement.scrollHeight;
+// }

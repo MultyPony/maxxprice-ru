@@ -311,17 +311,21 @@ main {
     text-align: center;
 }
 
+
+
 .feedback-card img {
-    /* border-radius: 100%;
+    border-radius: 100%;
+    /* width: 160px; */
     flex-basis: 15%;
-    max-width: 15%; */
+    max-width: 15%;
+    /* margin-top: 50px; */
 }
 
-/* @media(max-width: 600px) {
+@media(max-width: 600px) {
     .feedback-card img {
         max-width: 30%;
     }
-} */
+}
 
 .feedback-card p {
     font-weight: bold;

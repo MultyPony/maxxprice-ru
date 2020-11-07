@@ -58,7 +58,7 @@ func main() {
 		}
 	}()
 
-	handler := func(w http.ResponseWriter, r *http.Request) {
+	submitContactsHandler := func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 		b, err := ioutil.ReadAll(r.Body)
@@ -96,9 +96,35 @@ func main() {
 		}
 		fmt.Fprintf(w, "%s", b)
 	}
+	recallHandler := func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		b, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		var m RequestedMessage
+
+		err2 := json.Unmarshal(b, &m)
+		if err2 != nil {
+			log.Panic("JSON ER", err)
+		}
+
+		str := fmt.Sprintf("Поступила заявка в форму обратной связи. Номер телефона для связи %s.", m.Phone)
+
+		for key := range chatIDMap {
+			msg = tgbotapi.NewMessage(key, "")
+			msg.ParseMode = "Markdown"
+			msg.Text = str
+			bot.Send(msg)
+		}
+		fmt.Fprintf(w, "%s", b)
+	}
 	// fs := http.FileServer(http.Dir("./static"))
 	// http.Handle("/", fs)
-	http.HandleFunc("/submit-contacts", handler)
+	http.HandleFunc("/submit-contacts", submitContactsHandler)
+	http.HandleFunc("/api/recall", recallHandler)
 	log.Print("Listening on port " + port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }

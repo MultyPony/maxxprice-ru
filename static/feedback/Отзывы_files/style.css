@@ -379,41 +379,6 @@ h2 {
 #feedback-textarea:hover, #feedback-textarea:focus {
 	outline: none;
 }
-
-.image-cropper {
-	/* width: 200px; */
-    /* height: 200px; */
-	width: 100px;
-	height: 100px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.profile-pic {
-	display: inline;
-	margin: 0 auto;
-	margin-left: -25%; 
-	height: 100%;
-	width: auto;
-
-	/* max-width: 100% !important;  */
-	/* border-radius: 0 !important; */
-	object-fit: cover;
-}
-
-.width-cropped {
-	width: 125%;
-}
-
-.height-cropped {
-	height: 155%;
-}
-
-.margin-left-none {
-	margin-left: 0;
-}
-
 /*footer */
 
 footer p {
@@ -424,11 +389,6 @@ footer p {
 
 
 @media screen and (min-width: 600px) {
-	.image-cropper {
-		width: 160px;
-		height: 20vh;
-	}
-
 	.icon {
 		margin-right: 0;
 		width: 50px;

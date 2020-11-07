@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/property.css?v=138">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Часто задаваемые вопросы</title>
+    <script src="//code-ya.jivosite.com/widget/2cxT3gHuwH" async></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
         <div id="number-block">
             <img id="tr" src="/tr.png">
             <div id="number">
-                <span id="big-n">+7 (495) 231-84-03</span>
+                <span id="big-n"><a class="number__link" href="tel:+74952318403">+7 (495) 231-84-03</a></span>
                 <span id="small-t">ежедневно с <span class="small-n">10</span> до <span class="small-n">22</span></span>
             </div>
         </div>
@@ -85,7 +86,19 @@
             </div>
         </div>
     </main>
+    <div class="modal" id="rec">
+		<div class="content">
+			<span class="modal-close" data-dismiss="modal"></span>
+			<h6>Обратный звонок</h6>
+			<p>Введите ваш номер телефона,<br> и мы вам перезвоним</p>
+			<input type="text" style="border: 2px solid #e6ecf2;margin-bottom: 15px;" id="phone_rec"
+				placeholder="+7 (_ _ _) _ _ _-_ _-_ _">
+			<button id="sendrec" class="disabled">Заказать звонок</button>
+		</div>
+	</div>
     <footer>
         <span>Все права защищены 2020</span>
     </footer>
+    <script src="https://unpkg.com/imask"></script>
+    <script type="text/javascript" src="../js/recall.js"></script>
 </body>

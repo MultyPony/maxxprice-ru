@@ -75,6 +75,7 @@ try {
         document.houseTail = new SlimSelect({
             select: document.getElementById("house"),
             placeholder: 'Улица, Дом',
+            searchingText: 'Поиск...',
             searchPlaceholder: "Введите свой адрес и выберите его в появившемся ниже списке",
             search: true,
             onChange: (item) => {
@@ -333,7 +334,9 @@ try {
                     square: square,
                 })
             })
-            alert('Мы вам перезвоним!')
+            document.getElementById("phone_rec").value = ''
+            document.getElementById('sendrec').classList.add('disabled')
+            // alert('Мы вам перезвоним!')
             document.getElementById('rec').classList.remove('shown')
         }
         document.getElementById('sendres').onclick = () => {

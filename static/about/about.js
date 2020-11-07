@@ -1,7 +1,3 @@
-IMask(document.getElementById('phone_rec'), {
-    mask: '+{7}(000)000-00-00'
-})
-
 document.getElementById("phone_rec").onkeyup = (value) => {
     if (document.getElementById("phone_rec").value.length == 16) {
         document.getElementById('sendrec').classList.remove('disabled')
@@ -18,18 +14,15 @@ document.getElementById('sendrec').onclick = () => {
         method: "POST",
         body: JSON.stringify({
             phone: phone,
-            // rem: rem,
-            // rooms: rooms,
-            // city: city,
-            // house: house,
-            // square: square,
+            rem: rem,
+            rooms: rooms,
+            city: city,
+            house: house,
+            square: square,
         })
     })
     document.getElementById("phone_rec").value = ''
     document.getElementById('sendrec').classList.add('disabled')
     // alert('Мы вам перезвоним!')
-    document.getElementById('rec').classList.remove('shown')
-}
-document.getElementById('rec').getElementsByClassName('modal-close')[0].onclick = () => {
     document.getElementById('rec').classList.remove('shown')
 }
