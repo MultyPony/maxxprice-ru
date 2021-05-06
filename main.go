@@ -25,7 +25,7 @@ func main() {
 	port := os.Getenv("PORT")
 
 	const pass = "1234"
-	botToken := "1498849323:AAEnx4yglkRZRGx9fbn0_NstCqlX4ATLRJA"
+	botToken := "bot_token_here"
 	bot, err := tgbotapi.NewBotAPI(botToken)
 	if err != nil {
 		log.Panic("Что то не так... ", err)
